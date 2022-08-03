@@ -1,7 +1,6 @@
 <html>
 <head>
-    <!--script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script -->
+
     <link href="https://my.avc.edu/styles/main.css" rel="stylesheet" />
     <link href="https://my.avc.edu/styles/branding/avc.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" rel="stylesheet">
@@ -13,7 +12,8 @@
 
 
 <script>
-    var is_signed_in = false
+// on page load check for sign in and set accordingly
+    var is_signed_in = false;
 
 
 </script>
@@ -32,24 +32,28 @@
 </form>
 
 
-<button id="testbtn" type="button" onclick="signin()" width="250">Test Button for Sign in call back</button>
+<button id="test_btn" type="button" onclick="signin()" width="250">Test Button for Sign in call back</button>
+
+<p id="ex"></p>
+<button id="test_bttn" type="button" onclick="check_is_signed_in()" width="250">Test Button</button>
 
 <script>
-
-if ( is_signed_in == true) {
-    document.getElementById("message").innerHTML = "You signed in on " + Date();
-} else {
-    document.getElementById("message").innerHTML = "Please sign in.";
-}
+// put in callback and onload
+function check_is_signed_in() {
+    if ( is_signed_in == true) {
+            document.getElementById("message").innerHTML = "You signed in on " + Date();
+            document.getElementById("signin_form").style.display = 'none';
+        } else {
+            document.getElementById("message").innerHTML = "Please sign in.";
+        }
+    }
 
 function signin() {
-    var is_signed_in = true;
-    document.getElementById("message").innerHTML = "You signed in on " + Date();
-    document.getElementById("signin_form").style.display = 'none';
-    var timestamp = Notification.timestamp;
-    //document.getElementById("signin_form").setAttribute("attribute", "value");
-    document.getElementById("testbtn").innerHTML = "timestamp";
+    is_signed_in = true;
+    document.getElementById("ex").innerHTML = "timestamp: " + Date.now() +"  "+is_signed_in;
+    check_is_signed_in();
     }
+
 
 </script>
 
@@ -60,4 +64,9 @@ function signin() {
 
 
 
-<!-- class="field field--name-body field--type-text-with-summary field--label-hidden field--item" -->
+<!-- class="field field--name-body field--type-text-with-summary field--label-hidden field--item"
+document.getElementById("signin_form").setAttribute("attribute", "value");
+
+
+
+-->
