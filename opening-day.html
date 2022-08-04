@@ -1,0 +1,82 @@
+<html>
+<head>
+
+    <link href="https://my.avc.edu/styles/main.css" rel="stylesheet" />
+    <link href="https://my.avc.edu/styles/branding/avc.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" rel="stylesheet">
+
+    <style>
+		.hidden {
+			display:none;
+			}
+		body {
+      		height:25%;
+        	background-color: white;
+        	padding: 16px;
+    		}
+	</style>
+
+</head>
+<body>
+
+
+
+
+<script>
+// on page load check for sign in and set accordingly
+var is_signed_in = false;
+
+//get user params from flow?
+document.getElementById("avcid").setAttribute("value", "900#");
+
+</script>
+
+<div id="openingday" style="text-align: center;">
+    <h1 class="widget-heading text-bold py-4 flex-grow" style="color: rgb(139, 28, 64);">Opening Day Sign In</h1>
+    <text class="text-sm">Welcome to the AVC Opening Day Ceremonies.</text>
+    <br><br>
+    <h2 id="message" class="widget-heading text-bold py-4 flex-grow" style="color: rgb(139, 28, 64);">Please sign in</h2>
+    <form action="#"  method="post"  id="signin_form" style="text-align: center;">
+        <input type="hidden" id="avcid" name="avcid" value="123456789">
+        <input type="hidden" id="uname" name="uname" value="rwalden">
+        <input type="hidden" id="fname" name="fname" value="robert">
+        <input type="hidden" id="lname" name="lname" value="walden">
+        <input type="submit" value="Sign In" class="btn primary md" ><br>
+    </form>
+
+
+    <button id="test_btn" type="button" onclick="signin()" class="btn primary md">Test Button for Sign in call back</button>
+
+    <p id="ex"></p>
+    <button id="test_bttn" type="button" onclick="check_is_signed_in()" >Test Button</button>
+</div>
+
+<script>
+// put in callback and onload
+function check_is_signed_in() {
+    if ( is_signed_in == true) {
+            document.getElementById("message").innerHTML = "You signed in on " + Date();
+            document.getElementById("signin_form").style.display = 'none';
+        } else {
+            document.getElementById("message").innerHTML = "Please sign in.";
+        }
+    }
+
+function signin() {
+    is_signed_in = true;
+    document.getElementById("ex").innerHTML = "timestamp: " + Date.now() +"  "+is_signed_in;
+    check_is_signed_in();
+    }
+
+
+</script>
+
+
+
+</body>
+</html>
+
+
+
+<!-- class="field field--name-body field--type-text-with-summary field--label-hidden field--item"
+document.getElementById("signin_form").setAttribute("attribute", "value"); -->
